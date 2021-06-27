@@ -1,0 +1,2 @@
+data_01: std_dev = 0.1
+data_02: std_dev = 0.005
