@@ -11,18 +11,18 @@ def paths_initialization(town_dic):
     map_name = town_dic['name']
     weather_type = town_dic['weather']
 
-    intersection_csv = os.path.join(main_path, 'database', town_dir, '{}-intersections.csv'.format(town_dir))
-    waypoints_csv = os.path.join(main_path, 'database', town_dir, '{}-waypoints.csv'.format(town_dir))
-    spawn_csv = os.path.join(main_path, 'database', town_dir, '{}-spawn-locations.csv'.format(town_dir))
-    gps_intersection_csv = os.path.join(main_path, 'database', town_dir, '{}-gps-intersections.csv'.format(town_dir))
-    road_segments = os.path.join(main_path, 'database', town_dir, '{}_road_segments.txt'.format(town_dir))
+    intersection_csv = os.path.join(main_path, 'database', '{}-intersections.csv'.format(town_dir))
+    waypoints_csv = os.path.join(main_path, 'database', '{}-waypoints.csv'.format(town_dir))
+    spawn_csv = os.path.join(main_path, 'database', '{}-spawn-locations.csv'.format(town_dir))
+    gps_intersection_csv = os.path.join(main_path, 'database', '{}-gps-intersections.csv'.format(town_dir))
+    road_segments = os.path.join(main_path, 'database', '{}_road_segments.txt'.format(town_dir))
 
-    collected_data_dir = os.path.join(main_path, "collected_data")
-
-    img_dir = os.path.join(collected_data_dir, "camera_rgb/IMG")
-    csv_file = os.path.join(collected_data_dir, "camera_rgb/driving_log.csv")
-    lidar_dir = os.path.join(collected_data_dir, "lidar")
-    gnss_csv = os.path.join(collected_data_dir, "gnss_data.csv")
+    # collected_data_dir = os.path.join(main_path, "collected_data")
+    #
+    # img_dir = os.path.join(collected_data_dir, "camera_rgb/IMG")
+    # csv_file = os.path.join(collected_data_dir, "camera_rgb/driving_log.csv")
+    # lidar_dir = os.path.join(collected_data_dir, "lidar")
+    # gnss_csv = os.path.join(collected_data_dir, "gnss_data.csv")
 
     print("== PATHS INITIALIZATION RESULTS =========================")
     if not os.path.isfile(intersection_csv):
@@ -51,23 +51,23 @@ def paths_initialization(town_dic):
     # else:
     #     print("'IMG' directory      : using existed")
 
-    if not os.path.isdir(lidar_dir):
-        print("'lidar' directory    : newly created")
-        os.mkdir(lidar_dir)
-    else:
-        print("'lidar' directory    : using existed")
+    # if not os.path.isdir(lidar_dir):
+    #     print("'lidar' directory    : newly created")
+    #     os.mkdir(lidar_dir)
+    # else:
+    #     print("'lidar' directory    : using existed")
+    #
+    # if not os.path.isfile(csv_file):
+    #     print("'driving_log.csv'    : not existing")
+    # else:
+    #     print("'driving_log.csv'    : using existed")
+    #
+    # if not os.path.isfile(gnss_csv):
+    #     print("'gnss_data.csv'      : not existing")
+    # else:
+    #     print("'gnss_data.csv'      : using existed")
 
-    if not os.path.isfile(csv_file):
-        print("'driving_log.csv'    : not existing")
-    else:
-        print("'driving_log.csv'    : using existed")
-
-    if not os.path.isfile(gnss_csv):
-        print("'gnss_data.csv'      : not existing")
-    else:
-        print("'gnss_data.csv'      : using existed")
-
-    results = [map_name, weather_type, town_dir, gnss_csv,
+    results = [map_name, weather_type, town_dir,  # gnss_csv,
                gps_intersection_csv, waypoints_csv, spawn_csv, intersection_csv, road_segments]
 
     status = "-- STATUS            : Passed"

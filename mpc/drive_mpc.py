@@ -42,7 +42,6 @@ town_dic = dic.town02
 map_name, \
     weather_type, \
     current_town, \
-    gnss_csv, \
     gps_intersection_csv, \
     waypoints_csv, \
     spawn_csv, \
