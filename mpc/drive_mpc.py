@@ -440,24 +440,6 @@ def sensor_callback(sensor_data, sensor_queue, sensor_name):
     sensor_queue.put((sensor_data, sensor_name))
 
 
-def mpc_drive(world, vehicle, state, cx, cy, cyaw, ck, sp, dl, target_ind):
-    xref, target_ind, dref = calc_ref_trajectory(state, cx, cy, cyaw, ck, sp, dl, target_ind)
-    xr = xref[0]
-    yr = xref[1]
-    path = [[x, y] for x, y in zip(xr, yr)]
-    path = np.asarray(path)
-
-    carla_world_plot(world, path)
-
-    x0 = [state.x, state.y, state.v, state.yaw]  # current state
-    oa, odelta, ox, oy, oyaw, ov = iterative_linear_mpc_control(xref, x0, dref, oa, odelta)
-
-    if odelta is not None:
-        di, ai = odelta[0], oa[0]
-
-    vehicle.apply_control(carla.VehicleControl(throttle=ai, steer=di, brake=0))
-
-
 def game_loop(reload=True, hp=False, cp=False):  # hp: Horizon plot - cp: Course plot
     client = carla.Client('localhost', 2000)
     client.set_timeout(10.0)
