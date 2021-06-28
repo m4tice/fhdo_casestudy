@@ -42,7 +42,6 @@ town_dic = dic.town02
 map_name, \
     weather_type, \
     current_town, \
-    gnss_csv, \
     gps_intersection_csv, \
     waypoints_csv, \
     spawn_csv, \
@@ -154,7 +153,10 @@ def game_loop(reload=True, hp=False, cp=False):  # hp: Horizon plot - cp: Course
             world.tick()
             try:
                 ms, kmh = su.speed_estimation(vehicle)
-                traffic_manager.global_percentage_speed_difference(80)
+
+                # speed of autopilot
+                traffic_manager.global_percentage_speed_difference(0)
+
                 degree = vehicle.get_transform().rotation.yaw
                 rad = np.deg2rad(degree)
 
@@ -201,7 +203,7 @@ def game_loop(reload=True, hp=False, cp=False):  # hp: Horizon plot - cp: Course
         # Switch back to synchronous mode
         settings.synchronous_mode = False
         world.apply_settings(settings)
-        to.export_csv("loc_data.csv", loc_data)
+        to.export_csv("dataset_04.csv", loc_data)
 
         try:
             # Destroying actors

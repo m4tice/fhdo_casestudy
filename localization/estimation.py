@@ -14,7 +14,7 @@ def load_data(file_name):
 
 
 map_csv = "../database/town02-waypoints.csv"
-csv_file = "loc_data_05.csv"
+csv_file = "dataset_03.csv"
 
 # Covariance for EKF simulation
 Q = np.diag([
